@@ -4,118 +4,73 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="todocheckbox.css" />
         <title>Checkbox</title>
         <style>
-            /* Container */
-            .checkbox-container {
-                display: block;
-                position: relative;
-                font-size: 30px;
-                font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-                height: max-content;
-                padding: 5px 9px;
-                user-select: none;
-                margin-block: 0.3em;
-                padding-left: 1.5em;
+            .my-small-box {
+                font-size: 10px;
+                font-family: "Times New Roman", Times, serif;
             }
-            /* Outline */
-            .checkbox-container > .checkbox-outline {
-                box-sizing: border-box;
-                position: absolute;
-                width: 100%;
-                height: 100%;
-                top: 0;
-                left: 0;
-                z-index: -1;
-                background-color: white;
-                border: 0.06em solid grey;
-                border-radius: 5px;
-                box-shadow: 0 0 2px 2px rgba(197, 197, 197, 0.8);
+            .my-normal-box {
+                font-family: monospace;
             }
-            .checkbox-container:hover > .checkbox-outline {
-                background-color: rgb(245, 245, 245);
-            }
-            .checkbox-container > input[type="checkbox"]:checked ~ .checkbox-outline {
-                border-color: blue;
-                box-shadow: 0 0 2px 2px rgba(255, 217, 0, 0.8);
-            }
-            /* Box */
-            .checkbox-outline::before {
-                content: "";
-                box-sizing: border-box;
-                position: absolute;
-                border: 0.06em solid grey;
-                border-radius: 5px;
-                left: 0.3em;
-                width: 0.6em;
-                height: 0.6em;
-                top: 50%;
-                transform: translateY(-50%);
-            }
-            /* Checkmark */
-            .checkbox-outline::after {
-                content: "";
-                position: absolute;
-                top: 50%;
-                transform: translateY(-50%);
-                left: 0.4em;
-                width: 1em;
-                height: 1em;
-                background-image: url(check-blue.svg);
-                background-size: 0.9em;
-                background-repeat: no-repeat;
-                animation: checkmark-disappear 0.5s forwards;
-            }
-            .checkbox-container > input[type="checkbox"]:checked ~ .checkbox-outline::after {
-                animation: checkmark-appear 0.5s forwards;
-            }
-            @keyframes checkmark-appear {
-                0% {
-                    width: 0em;
-                }
-                100% {
-                    width: 1em;
-                }
-            }
-            @keyframes checkmark-disappear {
-                0% {
-                    background-position: 0em 0em;
-                    left: 0.4em;
-                    width: 1em;
-                }
-                100% {
-                    background-position: -0.98em 0em;
-                    left: 1.4em;
-                    width: 0em;
-                }
-            }
-            /* Input */
-            .checkbox-container > input[type="checkbox"] {
-                opacity: 0;
-                height: 0;
-                width: 0;
+            .my-large-box {
+                font-size: 35px;
+                font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
             }
         </style>
     </head>
     <body>
         <form action="">
-            <label class="checkbox-container">
-                <input type="checkbox" name="" id="" checked />
-                <span class="checkbox-outline"></span>
-                Hello! This is Multi Line Check Box.<br />
-                Hope you enjoy it.<br />
-                Nice to meet you.
-            </label>
-            <label class="checkbox-container">
-                <input type="checkbox" name="" id="" />
-                <span class="checkbox-outline"></span>
-                Checkbox1
-            </label>
-            <label class="checkbox-container">
-                <input type="checkbox" name="" id="" checked />
-                <span class="checkbox-outline"></span>
-                Checkbox2
-            </label>
+            <fieldset>
+                <legend>Block Box</legend>
+                <label class="checkbox-container">
+                    <input type="checkbox" name="" id="" />
+                    <span class="checkbox-outline"></span>
+                    Checkbox Block No outline [default]
+                </label>
+                <label class="checkbox-container box-enclose">
+                    <input type="checkbox" name="" id="" />
+                    <span class="checkbox-outline"></span>
+                    Checkbox Block with Border {box-enclose}
+                </label>
+            </fieldset>
+            <fieldset>
+                <legend>Inline Check Colors</legend>
+                <label class="checkbox-container box-inline box-enclose">
+                    <input type="checkbox" name="" id="" />
+                    <span class="checkbox-outline"></span>
+                    Checkbox [default]
+                </label>
+                <label class="checkbox-container box-enclose box-inline green-check">
+                    <input type="checkbox" name="" id="" />
+                    <span class="checkbox-outline"></span>
+                    Checkbox {green-check}
+                </label>
+                <label class="checkbox-container box-enclose box-inline purple-check">
+                    <input type="checkbox" name="" id="" />
+                    <span class="checkbox-outline"></span>
+                    Checkbox {purple-check}
+                </label>
+            </fieldset>
+            <fieldset>
+                <legend>Set your own font-size and font-family</legend>
+                <label class="checkbox-container box-enclose box-inline my-small-box">
+                    <input type="checkbox" name="" id="" />
+                    <span class="checkbox-outline"></span>
+                    Checkbox Small
+                </label>
+                <label class="checkbox-container box-enclose box-inline my-normal-box">
+                    <input type="checkbox" name="" id="" />
+                    <span class="checkbox-outline"></span>
+                    Checkbox Normal
+                </label>
+                <label class="checkbox-container box-enclose box-inline my-large-box">
+                    <input type="checkbox" name="" id="" />
+                    <span class="checkbox-outline"></span>
+                    Checkbox Large
+                </label>
+            </fieldset>
         </form>
     </body>
 </html>
