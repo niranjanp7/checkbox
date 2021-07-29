@@ -7,6 +7,26 @@
         <link rel="stylesheet" href="todocheckbox.css" />
         <title>Checkbox</title>
         <style>
+            :root {
+                --b-color: rgb(0, 86, 97);
+                --block-box: rgb(24, 255, 140);
+                --inline-check-colors: palegoldenrod;
+                --set-your-own: orchid;
+                --dark-theme: black;
+            }
+            body {
+                background-color: var(--b-color);
+            }
+            fieldset {
+                margin: 1em 0;
+                border-width: 0;
+                box-shadow: 0 0 8px 2px rgba(255, 255, 255, 0.8) inset;
+            }
+            legend {
+                font-size: 20px;
+                padding: 5px;
+                box-shadow: 12px 12px 8px -10px rgba(255, 255, 255, 0.8), -12px 12px 8px -10px rgba(255, 255, 255, 0.8);
+            }
             .my-small-box {
                 font-size: 10px;
                 font-family: "Times New Roman", Times, serif;
@@ -18,11 +38,39 @@
                 font-size: 35px;
                 font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
             }
+            .block-box {
+                background-color: var(--block-box);
+            }
+            .block-box > legend {
+                background-color: var(--b-color);
+                color: var(--block-box);
+            }
+            .inline-check-colors {
+                background-color: var(--inline-check-colors);
+            }
+            .inline-check-colors > legend {
+                background-color: var(--b-color);
+                color: var(--inline-check-colors);
+            }
+            .set-your-own {
+                background-color: var(--set-your-own);
+            }
+            .set-your-own > legend {
+                background-color: var(--b-color);
+                color: var(--set-your-own);
+            }
+            .dark-theme {
+                background-color: var(--dark-theme);
+            }
+            .dark-theme > legend {
+                background-color: var(--b-color);
+                color: var(--dark-theme);
+            }
         </style>
     </head>
     <body>
         <form action="">
-            <fieldset>
+            <fieldset class="block-box">
                 <legend>Block Box</legend>
                 <label class="checkbox-container">
                     <input type="checkbox" name="" id="" />
@@ -35,7 +83,7 @@
                     Checkbox Block with Border {box-enclose}
                 </label>
             </fieldset>
-            <fieldset>
+            <fieldset class="inline-check-colors">
                 <legend>Inline Check Colors</legend>
                 <label class="checkbox-container box-inline box-enclose">
                     <input type="checkbox" name="" id="" />
@@ -53,7 +101,7 @@
                     Checkbox {purple-check}
                 </label>
             </fieldset>
-            <fieldset>
+            <fieldset class="set-your-own">
                 <legend>Set your own font-size and font-family</legend>
                 <label class="checkbox-container box-enclose box-inline my-small-box">
                     <input type="checkbox" name="" id="" />
@@ -69,6 +117,14 @@
                     <input type="checkbox" name="" id="" />
                     <span class="checkbox-outline"></span>
                     Checkbox Large
+                </label>
+            </fieldset>
+            <fieldset class="dark-theme">
+                <legend>Dark Themes</legend>
+                <label class="checkbox-container box-enclose box-inline box-dracula">
+                    <input type="checkbox" name="" id="" />
+                    <span class="checkbox-outline"></span>
+                    Checkbox Dracula
                 </label>
             </fieldset>
         </form>
